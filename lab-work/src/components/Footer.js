@@ -2,7 +2,15 @@ import React from 'react';
 
 class Footer extends React.Component {
   render() {
-    return <footer>&copy; {new Date().getFullYear()} Code Fellows</footer>;
+    return (
+      <>
+        <footer>
+          <h5>
+            &copy; {new Date().getFullYear()} DeltaV401
+          </h5>
+        </footer>
+      </>
+    )
   }
 }
 

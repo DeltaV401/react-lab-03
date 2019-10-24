@@ -4,13 +4,20 @@ class Item extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: null,
-    }
+      text: this.props.text,
+      id: Math.random * 1000000,
+      complete: false,
+    };
   }
 
-  deleteItem = e => {
+  updateItem = (e, updatedItem) => {
     e.preventDefault();
-    this.setState({ item: null });
+    this.props.itemsList = this.props.itemsList.map(item => item.id === updatedItem.id ? updatedItem : item);
+  }
+
+  deleteItem = (e, id) => {
+    e.preventDefault();
+    this.props.itemsList = this.props.itemsList.filter(i => i.id !== id);
   }
 
   render() {
@@ -19,9 +26,10 @@ class Item extends React.Component {
       <ul>
         <li className={complete}>
           <span id={id}>
-            {text}
+            {this.props.text}
           </span>
-          <button onClick={this.deleteItem({id})}>delete</button>
+          <button onClick={this.updateItem(this.props.id)}>update</button>
+          <button onClick={this.deleteItem(this.props.id)}>delete</button>
         </li>
       </ul>
     )
