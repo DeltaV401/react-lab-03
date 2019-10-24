@@ -14,9 +14,17 @@
      <ul>
         {{#each list}}
         <li class="complete-{{complete}}">
-          <span id="{{id}}">
-            {{text}}
-          </span>
+          {{#if editing }}
+            <form method="post">
+              <input name="{{id}}" value={{text}} />
+            </form>
+          {{else}}
+            <span id="{{id}}">
+              {{text}}
+            </span>
+          {{/if}}
+
+          <button onClick=editItem({{id}})>edit</button>
           <button onClick=deleteItem({{id}})>delete</button>
         </li>
         {{/each}}

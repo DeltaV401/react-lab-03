@@ -19,11 +19,18 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form>
-        <input />
-        <button onClick={this.handleClick}>Add to To Do List!</button>
-        <List itemAdded={this.input}/>
-      </form>
+      <>
+        <section class="todo">
+          <header id="header"></header>
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              <input placeholder="Add To Do List Item" />
+              <button onClick={this.handleClick}>Add</button>
+            </form>
+          </div>
+          <div id="items"></div>
+        </section>
+      </>
     )
   }
 }

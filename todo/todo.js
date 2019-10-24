@@ -23,9 +23,6 @@ function Item(text) {
   this.id = Math.random();
   this.complete = false;
 }
-Item.prototype.toggle = function() {
-  this.complete = ! this.complete;
-};
 
 function drawItems() {
   let count = todoList.filter( item => !item.complete ).length;
@@ -41,19 +38,24 @@ function drawItems() {
 
 function handleSubmit(e) {
   e.preventDefault();
-  todoList.push( new Item(newItem.value) );
+  // WRONG: todoList.push( new Item(newItem.value) );
+
+  todoList = todoList.concat(
+    [
+      new Item(newItem.value)
+    ]
+  );
+
   e.target.reset();
   drawItems();
 }
 
 function toggleComplete(e) {
   let id = parseFloat(e.target.id);
-  let item = todoList.filter(i => i.id === id)[0] || {};
-  if (item.id) {
-    item.toggle();
-    updateList(item);
-    drawItems();
-  }
+
+  toggleItem(id);
+
+  drawItems();
 }
 
 function deleteItem(id) {
@@ -67,3 +69,20 @@ function updateList(updatedItem) {
       item.id === updatedItem.id ? updatedItem : item
     );
 }
+
+function toggleItem(idToToggle) {
+  todoList =
+    todoList.map(item =>
+      item.id === idToToggle ?
+        {
+          ...item,
+          complete: !item.complete,
+        } : item
+    );
+}
+
+/*
+this.setState(state => ({
+  todoList: state.todoList.map(....)
+}));
+*/

@@ -1,4 +1,5 @@
 import React from 'react';
+import Item from './Item';
 
 class List extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class List extends React.Component {
 
   handleClassToggle = e => {
     e.preventDefault();
-    if(this.itemClass = 'unclicked') {
+    if(this.itemClass === 'unclicked') {
       this.itemClass = 'clicked';
     } else {
       this.itemClass = 'unclicked';
