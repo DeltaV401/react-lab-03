@@ -2,8 +2,8 @@ import React from 'react';
 import List from './List';
 
 class Form extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       input: '',
     }
@@ -19,11 +19,18 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form>
-        <input />
-        <button onClick={this.handleClick}>Add to To Do List!</button>
-        <List itemAdded={this.input}/>
-      </form>
+      <>
+        <ul>
+          <li>
+            <form>
+              <input name="{id}" value={this.props.text} />
+            </form>
+          </li>
+        </ul>
+        <List 
+          newItem={this.state.input}
+        />
+      </>
     )
   }
 }
