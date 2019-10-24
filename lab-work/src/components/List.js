@@ -17,7 +17,9 @@ class List extends React.Component {
         <ul>
           {
             this.props.toDoList.map(item => (
-              <li>{item}</li>
+              <li key={Math.random()}>
+                {item.text}
+              </li>
             ))
           }
         </ul>

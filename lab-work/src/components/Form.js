@@ -11,10 +11,13 @@ class Form extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     let words = e.target.newInput.value;
-    this.setState({
-      input: words,
-    });
-    console.log(this.state.input)
+    if(typeof this.props.onDataReceived === 'function') {
+      this.props.onDataReceived({ 
+        text: words,
+        id: Math.random * 1000000,
+        complete: false,
+       });
+    }
   }
 
   render() {

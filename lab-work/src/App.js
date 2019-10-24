@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Form from './components/Form';
 import List from './components/List';
+import Item from './components/Item';
 
 class App extends React.Component {
   constructor() {
@@ -12,11 +13,12 @@ class App extends React.Component {
     }
   }
 
-  addToDo = toDoList => {
-    this.setState({ toDoList })
+  addToDo = toDo => {
+    this.setState(state => ({ toDoList: state.toDoList.concat([toDo])}))
   }
 
   render() {
+    console.log(this.state.toDoList)
     return (
       <>
         <Header />
