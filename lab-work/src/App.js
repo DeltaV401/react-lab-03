@@ -14,7 +14,21 @@ class App extends React.Component {
   }
 
   addToDo = toDo => {
-    this.setState(state => ({ toDoList: state.toDoList.concat([toDo])}))
+    this.setState(state => ({
+      toDoList: state.toDoList.concat([toDo])
+    }))
+  }
+
+  updateItem = updatedToDo => {
+    this.setState(state => ({
+      toDoList: state.toDoList.map(toDo => toDo.id === updatedToDo.id ? updatedToDo : toDo)
+    }));
+  }
+
+  deleteItem = id => {
+    this.setState(state => ({
+      toDoList: state.toDoList.filter(toDo => toDo.id !== id)
+    }));
   }
 
   render() {
@@ -27,6 +41,8 @@ class App extends React.Component {
         />
         <List 
           toDoList={this.state.toDoList}
+          updateItem={this.updateItem}
+          deleteItem={this.deleteItem}
         />
         <Footer />
       </>

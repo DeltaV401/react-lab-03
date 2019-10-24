@@ -2,24 +2,21 @@ import React from 'react';
 import Item from './Item';
 
 class List extends React.Component {
-
-  addItem = e => {
-    e.preventDefault();
-    this.setState({
-      toDoList: this.state.toDoList.concat([new Item(this.props.newItem.value)]),
-    });
-    console.log(this.state.toDoList)
+  constructor(props) {
+    super(props);
   }
-
   render() {
     return (
       <>
         <ul>
           {
             this.props.toDoList.map(item => (
-              <li key={Math.random()}>
-                {item.text}
-              </li>
+              <Item
+                key={item.id}
+                item={item}
+                updateItem={this.props.updateItem}
+                deleteItem={this.props.deleteItem}
+              />
             ))
           }
         </ul>

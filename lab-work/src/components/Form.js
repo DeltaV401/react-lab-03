@@ -14,10 +14,11 @@ class Form extends React.Component {
     if(typeof this.props.onDataReceived === 'function') {
       this.props.onDataReceived({ 
         text: words,
-        id: Math.random * 1000000,
+        id: Math.random() * 1000000,
         complete: false,
        });
     }
+    e.target.reset();
   }
 
   render() {
