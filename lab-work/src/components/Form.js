@@ -1,29 +1,37 @@
 import React from 'react';
-import List from './List';
 
 class Form extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       input: '',
     }
   }
 
-  handleClick = e => {
+  handleSubmit = e => {
     e.preventDefault();
-    let words = e.target.value;
-    this.setState({
-      input: words,
-    });
+    let words = e.target.newInput.value;
+    if(typeof this.props.onDataReceived === 'function') {
+      this.props.onDataReceived({ 
+        text: words,
+        id: Math.random() * 1000000,
+        complete: false,
+       });
+    }
+    e.target.reset();
   }
 
   render() {
     return (
-      <form>
-        <input />
-        <button onClick={this.handleClick}>Add to To Do List!</button>
-        <List itemAdded={this.input}/>
-      </form>
+      <>
+        <ul>
+          <li>
+            <form onSubmit={this.handleSubmit}>
+              <input name="newInput"/>
+            </form>
+          </li>
+        </ul>
+      </>
     )
   }
 }

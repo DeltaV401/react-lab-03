@@ -1,43 +1,25 @@
 import React from 'react';
+import Item from './Item';
 
 class List extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      items: [],
-      itemClass: 'unclicked',
-    };
   }
-
-  handleClassToggle = e => {
-    e.preventDefault();
-    if(this.itemClass = 'unclicked') {
-      this.itemClass = 'clicked';
-    } else {
-      this.itemClass = 'unclicked';
-    }
-  }
-
-  addItem = e => {
-    e.preventDefault();
-    this.items.push(this.props.itemAdded)
-  }
-
   render() {
     return (
       <>
         <ul>
           {
-            this.state.items.map(item => (
-              <li
-              onClick={this.handleClassToggle}
-              key={item.id}
-              className={this.itemClass}>
-                {this.props.itemAdded}
-              </li>
+            this.props.toDoList.map(item => (
+              <Item
+                key={item.id}
+                item={item}
+                toggleComplete={this.props.toggleComplete}
+                updateItem={this.props.updateItem}
+                deleteItem={this.props.deleteItem}
+              />
             ))
           }
-          <li>{this.props.itemAdded}</li>
         </ul>
       </>
     )

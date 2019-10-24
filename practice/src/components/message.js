@@ -12,13 +12,13 @@ class Message extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <Title text={this.props.title}/>
         <h2>{this.props.text}</h2>
         <h3>{this.state.words}</h3>
-        <h4>{this.props.input}</h4>
         <Form do={this.props.action}/>
-      </React.Fragment>
+        <h4>Your Words: {this.props.input}</h4>
+      </>
     )
   }
 }
