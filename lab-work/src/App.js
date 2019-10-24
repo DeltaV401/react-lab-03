@@ -25,6 +25,17 @@ class App extends React.Component {
     }));
   }
 
+  toggleComplete = toggledID => {
+    this.setState(state => ({
+      toDoList: state.toDoList.map(toDo => toDo.id === toggledID ?
+        {
+          ...toDo,
+          complete: !toDo.complete,
+        } : toDo,
+      )
+    }))
+  }
+
   deleteItem = id => {
     this.setState(state => ({
       toDoList: state.toDoList.filter(toDo => toDo.id !== id)
