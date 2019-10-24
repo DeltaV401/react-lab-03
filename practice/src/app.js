@@ -5,15 +5,15 @@ import './styles.css';
 import Message from './components/message.js';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      input: this.sayIt(),
+      input: this.sayIt,
     }
   }
 
-  sayIt(string) {
-    return string;
+  sayIt = (string) => {
+    this.setState({ input: string });
   }
 
   render() {
