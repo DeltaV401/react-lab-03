@@ -1,5 +1,4 @@
 import React from 'react';
-import List from './List';
 
 class Form extends React.Component {
   constructor(props) {
@@ -9,12 +8,13 @@ class Form extends React.Component {
     }
   }
 
-  handleClick = e => {
+  handleSubmit = e => {
     e.preventDefault();
-    let words = e.target.value;
+    let words = e.target.newInput.value;
     this.setState({
       input: words,
     });
+    console.log(this.state.input)
   }
 
   render() {
@@ -22,14 +22,11 @@ class Form extends React.Component {
       <>
         <ul>
           <li>
-            <form>
-              <input name="{id}" value={this.props.text} />
+            <form onSubmit={this.handleSubmit}>
+              <input name="newInput"/>
             </form>
           </li>
         </ul>
-        <List 
-          newItem={this.state.input}
-        />
       </>
     )
   }

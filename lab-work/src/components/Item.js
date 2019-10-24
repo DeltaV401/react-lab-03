@@ -26,7 +26,7 @@ class Item extends React.Component {
       <ul>
         <li className={complete}>
           <span id={id}>
-            {this.props.text}
+            {this.state.text}
           </span>
           <button onClick={this.updateItem(this.props.id)}>update</button>
           <button onClick={this.deleteItem(this.props.id)}>delete</button>
