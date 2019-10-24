@@ -5,6 +5,8 @@ import Form from './components/Form';
 import List from './components/List';
 import Item from './components/Item';
 
+import './app.scss';
+
 class App extends React.Component {
   constructor() {
     super();
@@ -52,6 +54,7 @@ class App extends React.Component {
         />
         <List 
           toDoList={this.state.toDoList}
+          toggleComplete={this.toggleComplete}
           updateItem={this.updateItem}
           deleteItem={this.deleteItem}
         />

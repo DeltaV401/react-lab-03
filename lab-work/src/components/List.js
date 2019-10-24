@@ -14,6 +14,7 @@ class List extends React.Component {
               <Item
                 key={item.id}
                 item={item}
+                toggleComplete={this.props.toggleComplete}
                 updateItem={this.props.updateItem}
                 deleteItem={this.props.deleteItem}
               />

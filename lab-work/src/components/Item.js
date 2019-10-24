@@ -7,6 +7,11 @@ class Item extends React.Component {
     };
   }
 
+  toggleComplete = e => {
+    e.preventDefault();
+    this.props.toggleComplete(this.props.item.id)
+  }
+
   handleUpdate = e => {
     e.preventDefault();
     this.props.updateItem(this.props.item.id)
@@ -21,7 +26,7 @@ class Item extends React.Component {
     let { complete, id, text } = this.props.item;
     return (
       <li className={`complete-${complete}`}>
-        <span onClick={this.handleUpdate}>
+        <span onClick={this.toggleComplete}>
           {text}
         </span>
         <button onClick={this.handleDelete}>delete</button>
