@@ -9,10 +9,10 @@ class Form extends React.Component {
   }
 
   handleSubmit = e => {
-    e.preventDefault();
     let words = e.target.newInput.value;
     let name = e.target.nameInput.value;
     if(typeof this.props.onDataReceived === 'function') {
+      e.preventDefault();
       this.props.onDataReceived({
         name: name,
         text: words,
@@ -20,8 +20,7 @@ class Form extends React.Component {
         complete: false,
        });
     }
-    e.target.newInput.reset();
-    e.target.nameInput.reset();
+    e.target.reset();
   }
 
   render() {
@@ -29,10 +28,10 @@ class Form extends React.Component {
       <>
         <ul>
           <li>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <input name="newInput" placeholder="What to do?"/>
               <input name="nameInput" placeholder="Who is doing it?"/>
-              <button onSubmit={this.handleSubmit}>Submit ToDo</button>
+              <button>Submit ToDo</button>
             </form>
           </li>
         </ul>
