@@ -23,13 +23,15 @@ class Item extends React.Component {
   }
 
   render() {
-    let { complete, text, name } = this.props.item;
+    let { complete, text, name, difficulty, date } = this.props.item;
     return (
       <li className={`complete-${complete}`}>
         <span>{name} has to </span>
         <span onClick={this.toggleComplete}>
           {text}
         </span>
+        <span> on {date}</span>
+        <span>Difficulty: {difficulty}</span>
         <button onClick={this.handleDelete}>delete</button>
       </li>
     )
