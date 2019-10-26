@@ -2,9 +2,6 @@ import React from 'react';
 import Item from './Item';
 
 class List extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <>
@@ -17,6 +14,7 @@ class List extends React.Component {
                 toggleComplete={this.props.toggleComplete}
                 updateItem={this.props.updateItem}
                 deleteItem={this.props.deleteItem}
+                assignedTo={this.props.assignedTo}
               />
             ))
           }

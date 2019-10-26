@@ -23,9 +23,10 @@ class Item extends React.Component {
   }
 
   render() {
-    let { complete, id, text } = this.props.item;
+    let { complete, text, name } = this.props.item;
     return (
       <li className={`complete-${complete}`}>
+        <span>{name} has to </span>
         <span onClick={this.toggleComplete}>
           {text}
         </span>
