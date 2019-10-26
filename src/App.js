@@ -3,9 +3,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Form from './components/Form';
 import List from './components/List';
-import Item from './components/Item';
 
-import './app.scss';
+import './styles/app.scss';
 
 class App extends React.Component {
   constructor() {
@@ -48,7 +47,9 @@ class App extends React.Component {
     console.log(this.state.toDoList)
     return (
       <>
-        <Header />
+        <Header 
+          count={this.state.toDoList.length}
+        />
         <Form
           onDataReceived={this.addToDo}
         />
