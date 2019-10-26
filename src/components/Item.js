@@ -26,12 +26,13 @@ class Item extends React.Component {
     let { complete, text, name, difficulty, date } = this.props.item;
     return (
       <li className={`complete-${complete}`}>
-        <span>{name} has to </span>
-        <span onClick={this.toggleComplete}>
+        <span className="assigned">{name} has to </span>
+        <span className="taskToDo" onClick={this.toggleComplete}>
           {text}
         </span>
-        <span> on {date}</span>
-        <span>Difficulty: {difficulty}</span>
+        <span className="dueDate"> on {date}</span>
+        <span className="difficulty">Difficulty: {difficulty}</span>
+        <button onClick={this.handleModal}>details</button>
         <button onClick={this.handleDelete}>delete</button>
       </li>
     )
